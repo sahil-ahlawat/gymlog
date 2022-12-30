@@ -1,7 +1,7 @@
 const User = require('../models/user.model');
 const customcrud = require('../models/customcrud');
 const { hash: hashPassword, compare: comparePassword } = require('../utils/password');
-const { generate: generateToken } = require('../utils/token');
+const { generate: generateToken, decode: decode } = require('../utils/token');
 const uploadFile = require("../middlewares/upload");
 // const multer  = require('multer')
 // const upload = multer({ dest: 'uploads/' })
@@ -248,9 +248,9 @@ exports.getloggedinuserdata = (req, res) => {
                 res.status(200).send({
                 status: "success",
                 data: data
+                    });
+                }
             });
-        }
-    });
         }
         else{
             res.status(400).send({
@@ -325,15 +325,37 @@ exports.getcsrf = (req, res) => {
 // to be done
 exports.updateapplocation = (req,res) =>{
     try{
-        res.status(200).send({
-            status: 'success',
-            data: {
-                message:"Success"
+        const {location} = req.body;
+        if(req.headers.csrf && location){
+           let decodecsrf = decode(req.headers.csrf);
+           let appid = decodecsrf.id;
+           appcrud = customcrud("app");
+           appcrud.update( {"id": appid}, {"location": location},function (err, vals) {
+            //mysql callback
+            if(err){
+                res.status(500).send({
+                    message: `Could update data : . ${err}`,
+                  });  
             }
-        });
+            
+            res.status(200).send({
+                status: 'success',
+                data: {
+                    message:`Data updated`,
+                    obj: vals
+                }
+            });
+        })
+        }
+        else{
+            res.status(400).send({
+                status: "error",
+                message: "Not logged in."
+            });
+        }
     } catch (err) {
         res.status(500).send({
-          message: `Could not get csrf : . ${err}`,
+          message: `Could not update data : . ${err}`,
         });
       }
     return;
@@ -341,15 +363,37 @@ exports.updateapplocation = (req,res) =>{
 
 exports.updatepushnotificationtoken = (req,res) =>{
     try{
-        res.status(200).send({
-            status: 'success',
-            data: {
-                message:"Success"
+        const {devicetoken} = req.body;
+        if(req.headers.csrf && devicetoken){
+           let decodecsrf = decode(req.headers.csrf);
+           let appid = decodecsrf.id;
+           appcrud = customcrud("app");
+           appcrud.update( {"id": appid}, {"devicetoken": devicetoken},function (err, vals) {
+            //mysql callback
+            if(err){
+                res.status(500).send({
+                    message: `Could update data : . ${err}`,
+                  });  
             }
-        });
+            
+            res.status(200).send({
+                status: 'success',
+                data: {
+                    message:`Data updated`,
+                    obj: vals
+                }
+            });
+        })
+        }
+        else{
+            res.status(400).send({
+                status: "error",
+                message: "Not logged in."
+            });
+        }
     } catch (err) {
         res.status(500).send({
-          message: `Could not get csrf : . ${err}`,
+          message: `Could not update data : . ${err}`,
         });
       }
     return;
