@@ -322,7 +322,7 @@ exports.getcsrf = (req, res) => {
       }
     return;
 }
-// to be done
+
 exports.updateapplocation = (req,res) =>{
     try{
         const {location} = req.body;
@@ -398,18 +398,120 @@ exports.updatepushnotificationtoken = (req,res) =>{
       }
     return;
 }
-
+// to be done
 exports.togglenotificationandprivacysettings = (req,res) =>{
     try{
-        res.status(200).send({
-            status: 'success',
-            data: {
-                message:"Success"
-            }
-        });
+        const {email, receivenotification, privacysetting} = req.body;
+        if(email){
+            User.findByEmail(email.trim(), (err, data) => {
+                if (err) {
+                    if (err.kind === "not_found") {
+                        res.status(404).send({
+                            status: 'error',
+                            message: `User with email ${email} was not found`
+                        });
+                        return;
+                    }
+                    res.status(500).send({
+                        status: 'error',
+                        message: err.message
+                    });
+                    return;
+                }
+                if (data) {
+                   
+                    let user_id = data.id;
+                    let user_meta = customcrud("user_meta");
+                    // receivenotification, privacysetting
+                    user_meta.load({'user_id' : user_id, 'meta_key' : 'privacysetting'}, function(err,vals){
+                        if(err){
+                            res.status(500).send({
+                                status: 'error while getting privacy setting',
+                                message: err.message
+                            });
+                        }
+                        
+                        if(vals.length > 0){
+                            // update
+                            user_meta.update( {'user_id' : user_id, 'meta_key' : 'privacysetting'}, {"meta_value": privacysetting},function (err, vals) {
+                                //mysql callback
+                                if(err){
+                                    res.status(500).send({
+                                        message: `Could update privacysetting setting : . ${err}`,
+                                      });  
+                                }
+                                
+                            })
+                        }
+                        else{
+                            
+                            // create
+                            user_meta.create({'user_id' : user_id, 'meta_key' : 'privacysetting',"meta_value": privacysetting}, function (err, vals) {
+                                //mysql callback
+                                if(err){
+                                    res.status(500).send({
+                                        message: `Could insert privacysetting setting : . ${err}`,
+                                      });  
+                                }
+                            });
+                        }
+                    });
+                    
+                    user_meta.load({'user_id' : user_id, 'meta_key' : 'receivenotification'}, function(err,vals){
+                        if(err){
+                            res.status(500).send({
+                                message: `Could update receivenotification setting : . ${err}`,
+                              });  
+                        }
+                        if(vals.length > 0){
+                            // update
+                            user_meta.update( {'user_id' : user_id, 'meta_key' : 'receivenotification'}, {"meta_value": receivenotification},function (err, vals) {
+                                //mysql callback
+                                if(err){
+                                    res.status(500).send({
+                                        message: `Could update receivenotification setting : . ${err}`,
+                                      });  
+                                }
+                                
+                            })
+                        }
+                        else{
+                            // create
+                            user_meta.create({'user_id' : user_id, 'meta_key' : 'receivenotification',"meta_value": receivenotification}, function (err, vals) {
+                                //mysql callback
+                                if(err){
+                                    res.status(500).send({
+                                        message: `Could insert receivenotification setting : . ${err}`,
+                                      });  
+                                }
+                            });
+                        }
+                    });
+                    res.status(200).send({
+                        status: 'success',
+                        data: {
+                            message:"Success"
+                        }
+                    });
+                }
+            });
+        }
+        else{
+            res.status(400).send({
+                status: "error",
+                message: "Not logged in."
+            });
+        }
+
+        // res.status(200).send({
+        //     status: 'success',
+        //     data: {
+        //         message:"Settings updated"
+        //     }
+        // });
     } catch (err) {
         res.status(500).send({
-          message: `Could not get csrf : . ${err}`,
+          message: `Could not update data : . ${err}`,
         });
       }
     return;
