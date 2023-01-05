@@ -1,4 +1,5 @@
 # NodeJS Auth REST API example with Express, Mysql, and JWT
+## currently working on adding exercises and leaderboard
 
 ## Features
 1. User can sign up
