@@ -1,5 +1,6 @@
 # NodeJS Auth REST API example with Express, Mysql, and JWT
-
+## currently working on adding exercises and leaderboard
+###resume working on it
 ## Features
 1. User can sign up
 2. User can sign in
@@ -50,7 +51,7 @@ Signin expects
 You can either fork this repository or clone it by starting your terminal, then change the directory to where you would like to save it and run
 
 ```sh
-git clone https://github.com/desirekaleba/node-mysql-jwt-auth.git
+git clone https://github.com/sahil-ahlawat/gymlog.git
 ```
 Change to the newly downloaded directory with
 
