@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "0f16c834-af91-4a76-be53-e766c715ea60",
+		"name": "Gymlog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:3000/api/auth/signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\":\"sahil\",\r\n    \"lastname\":\"ahlawat\",\r\n    \"email\":\"sahilahlawat3@gmail.com\",\r\n    \"password\":\"numberpAisa001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/auth/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/auth/signin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "csrf",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTY3MjQyNjIxMSwiZXhwIjoxNjcyNTEyNjExfQ.2YX5nHenCsIw7A-hwK-QDo8JGqo-8gX2cAEP0oXgmRg",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"sahilahlawat2@gmail.com\",\r\n    \"password\":\"numberpAisa001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/auth/signin",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/auth/forgotpassword",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"sahilahlawat3@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/auth/forgotpassword",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"forgotpassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/auth/signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"sahilahlawat3@gmail.com\",\r\n    \"oldpassword\":\"d163dba3a8d7d\",\r\n    \"newpassword\":\"numberpAisa001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/auth/resetpassword",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"resetpassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/auth/updateuserinfo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"sahilahlawat2@gmail.com\",\r\n    \"country\":\"USA\",\r\n    \"gym\":\"1,2\",\r\n    \"sportscategory\":\"1,2,3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/auth/updateuserinfo",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"updateuserinfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/auth/uploadmedia",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InNhaGlsYWhsYXdhdDJAZ21haWwuY29tIiwiaWF0IjoxNjcyMDc5MjkyLCJleHAiOjE2NzIxNjU2OTJ9.VoAS0wyQ8UkQNhV_4knWHPBzMX203lXVNpN7MhOj1xA",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "email",
+						"value": "sahilahlawat2@gmail.com",
+						"type": "default"
+					},
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InNhaGlsYWhsYXdhdDJAZ21haWwuY29tIiwiaWF0IjoxNjcyNDI2NDQxLCJleHAiOjE2NzI1MTI4NDF9.5wKgHKepDvjRvwVXBf0YirfzKNY3xdh8NN-KRHZYaTw",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/sahlawat/Downloads/HOME BG.png"
+						},
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjcyMDc4NTkwLCJleHAiOjE2NzIxNjQ5OTB9.fv0ypEasIpTnAy1bCDRPLkdPb3nBJyMCx82dmPFc1Ag",
+							"type": "default",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/auth/uploadmedia",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"uploadmedia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/auth/getloggedinuserdata",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "email",
+						"value": "sahilahlawat2@gmail.com",
+						"type": "default"
+					},
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InNhaGlsYWhsYXdhdDJAZ21haWwuY29tIiwiaWF0IjoxNjcyMDc5MjkyLCJleHAiOjE2NzIxNjU2OTJ9.VoAS0wyQ8UkQNhV_4knWHPBzMX203lXVNpN7MhOj1xA",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/auth/getloggedinuserdata",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"getloggedinuserdata"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/auth/getcsrf",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/auth/getcsrf",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"getcsrf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/auth/togglenotificationandprivacysettings?csrf",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "csrf",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTY3MjQyNjc5OCwiZXhwIjoxNjcyNTEzMTk4fQ.TrIcJ9j1-k3NvY2vcCzM8T3dn23TWKNCnwxUwHqgBFY",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"sahilahlawat2@GMAIL.COM\",\r\n    \"receivenotification\":\"true\",\r\n    \"privacysetting\":\"private\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/auth/togglenotificationandprivacysettings",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"togglenotificationandprivacysettings"
+					],
+					"query": [
+						{
+							"key": "csrf",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTY3MjQyNjc5OCwiZXhwIjoxNjcyNTEzMTk4fQ.TrIcJ9j1-k3NvY2vcCzM8T3dn23TWKNCnwxUwHqgBFY",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/auth/updateapplocation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "csrf",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTY3MjQyNjc5OCwiZXhwIjoxNjcyNTEzMTk4fQ.TrIcJ9j1-k3NvY2vcCzM8T3dn23TWKNCnwxUwHqgBFY",
+						"type": "default"
+					},
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InNhaGlsYWhsYXdhdDJAZ21haWwuY29tIiwiaWF0IjoxNjcyNDI2NDQxLCJleHAiOjE2NzI1MTI4NDF9.5wKgHKepDvjRvwVXBf0YirfzKNY3xdh8NN-KRHZYaTw",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "email",
+						"value": "sahilahlawat2@gmail.com",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"location\":\"Gurgaon\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/auth/updateapplocation",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"updateapplocation"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
